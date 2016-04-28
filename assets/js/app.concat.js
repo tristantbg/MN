@@ -539,7 +539,7 @@ function init() {
             style: {
                 'position': 'fixed',
                 'padding': '10px',
-                'top': '-12px',
+                'top': '-15px',
                 'height': '40px',
                 'width': '100%'
             },
