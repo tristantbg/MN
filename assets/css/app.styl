@@ -1,0 +1,1244 @@
+@import 'nib'
+@import '../../node_modules/jeet/stylus/jeet'
+@import '_mixins.styl'
+@import '../oembed/oembed.css'
+@import '../js/vendor/jquery-ui/jquery-ui.min.css'
+
+$desktop = 1100px
+$padding = 30px
+
+$primary ?= white
+$secondary ?= #e9e0dcff
+$main_font = "PL"
+$accent_font = "PLI"
+$secondary_font = "Helvetica", "Arial", sans-serif
+
+// CSS Reset
+global-reset()
+//edit()
+
+webfont('PL', 'PL', true, 'normal')
+webfont('PLI', 'PLI', true, 'italic')
+webfont('CR', 'CR', true, 'italic')
+
+boxsizing()
+
+body
+	font-family $main_font
+	text-rendering optimizeLegibility
+	font-smoothing()
+	//letter-spacing -.02em
+	font-size 3.9vw
+	transition(background-color, 1s)
+	overflow-x hidden
+	+below($desktop)
+		font-size 30px
+
+.loader
+	flexbox()
+	flex-flow row nowrap
+	align-items center
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	background #FFFFFF
+	z-index 80000
+	img
+		align()
+
+::selection
+	background $secondary
+	
+::-moz-selection
+	background $secondary
+
+a, a:hover, a:visited, a:focus
+	color inherit
+	font-family $accent_font
+	text-decoration none
+	position relative
+	cursor pointer
+	+below($desktop)
+		border-bottom 1px solid rgba(0,0,0,0.8)
+
+.project_desc a
+	border-bottom 1px solid
+
+a::before, .link::before
+	content " "
+	position absolute
+	width 100%
+	//height .035em
+	height 1px
+	bottom 0.1em
+	left 0
+	background-color rgba(0,0,0,0.8)
+	transition()
+	transform(scaleX(0))
+	opacity 0.5
+	transform-origin left
+	+below($desktop)
+		content ""
+		display none
+
+a:hover::before, .link:hover::before, .link.active::before
+	opacity 1
+	transform(scaleX(1))
+
+em
+	font-family "PLI"
+
+.link.invert::before, .credits a::before
+	transform(scaleX(1))
+	opacity 1
+
+.link.invert:hover::before, .credits a:hover::before
+	transform(scaleX(0))
+	opacity 0.5
+	
+.indent
+	text-indent 1em
+
+.container
+	padding 0 $padding
+	+below($desktop)
+		padding 0 ($padding/2)
+
+.wrap
+	span(11/12)
+	margin-top 10%
+	+below($desktop)
+		span(1)
+		line-height 1.1em
+
+section
+	width 100%
+	height 100vh
+	+below($desktop)
+		height auto
+	clear both
+	min-height 100vh
+
+[data-target]
+	cursor pointer
+
+.blink {
+  animation: blinker 500ms linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+
+////////////////////////////////////////////////////////////////// FORM
+
+/* MailChimp Form Embed Code - Classic - 08/17/2011 */
+#mc_embed_signup form {display:block; position:relative; text-align:left; padding:10px 0 10px 3%}
+#mc_embed_signup h2 {font-weight:bold; padding:0; margin:15px 0; font-size:1.4em;}
+#mc_embed_signup input {border:1px solid #999; -webkit-appearance:none;}
+#mc_embed_signup input[type=checkbox]{-webkit-appearance:checkbox;}
+#mc_embed_signup input[type=radio]{-webkit-appearance:radio;}
+#mc_embed_signup input:focus {border-color:#333;}
+#mc_embed_signup .button {clear:both; background-color: #aaa; border: 0 none; border-radius:4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size:15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0 22px; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: auto;}
+#mc_embed_signup .button:hover {background-color:#777;}
+#mc_embed_signup .small-meta {font-size: 11px;}
+#mc_embed_signup .nowrap {white-space:nowrap;}
+
+#mc_embed_signup .mc-field-group {clear:left; position:relative; width:96%; padding-bottom:3%; min-height:50px;}
+#mc_embed_signup .size1of2 {clear:none; float:left; display:inline-block; width:46%; margin-right:4%;}
+* html #mc_embed_signup .size1of2 {margin-right:2%; /* Fix for IE6 double margins. */}
+#mc_embed_signup .mc-field-group label {display:block; margin-bottom:3px;}
+#mc_embed_signup .mc-field-group input {display:block; width:100%; padding:8px 0; text-indent:2%;}
+#mc_embed_signup .mc-field-group select {display:inline-block; width:99%; padding:5px 0; margin-bottom:2px;}
+
+#mc_embed_signup .datefield, #mc_embed_signup .phonefield-us{padding:5px 0;}
+#mc_embed_signup .datefield input, #mc_embed_signup .phonefield-us input{display:inline; width:60px; margin:0 2px; letter-spacing:1px; text-align:center; padding:5px 0 2px 0;}
+#mc_embed_signup .phonefield-us .phonearea input, #mc_embed_signup .phonefield-us .phonedetail1 input{width:40px;}
+#mc_embed_signup .datefield .monthfield input, #mc_embed_signup .datefield .dayfield input{width:30px;}
+#mc_embed_signup .datefield label, #mc_embed_signup .phonefield-us label{display:none;}
+
+#mc_embed_signup .indicates-required {text-align:right; font-size:11px; margin-right:4%;}
+#mc_embed_signup .asterisk {color:#c60; font-size:200%;}
+#mc_embed_signup .mc-field-group .asterisk {position:absolute; top:25px; right:10px;}        
+#mc_embed_signup .clear {clear:both;}
+
+#mc_embed_signup .mc-field-group.input-group ul {margin:0; padding:5px 0; list-style:none;}
+#mc_embed_signup .mc-field-group.input-group ul li {display:block; padding:3px 0; margin:0;}
+#mc_embed_signup .mc-field-group.input-group label {display:inline;}
+#mc_embed_signup .mc-field-group.input-group input {display:inline; width:auto; border:none;}
+
+#mc_embed_signup div#mce-responses {float:left; top:-1.4em; padding:0em .5em 0em .5em; overflow:hidden; width:90%;margin: 0 5%; clear: both;}
+#mc_embed_signup div.response {margin:1em 0; padding:1em .5em .5em 0; font-weight:bold; float:left; top:-1.5em; z-index:1; width:80%;}
+#mc_embed_signup #mce-error-response {display:none;}
+#mc_embed_signup #mce-success-response {color:#529214; display:none;}
+#mc_embed_signup label.error {display:block; float:none; width:auto; margin-left:1.05em; text-align:left; padding:.5em 0;}
+
+#mc-embedded-subscribe {clear:both; width:auto; display:block; margin:1em 0 1em 5%;}
+#mc_embed_signup #num-subscribers {font-size:1.1em;}
+#mc_embed_signup #num-subscribers span {padding:.5em; border:1px solid #ccc; margin-right:.5em; font-weight:bold;}
+
+input, #mc_embed_signup .mc-field-group input, [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea, [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus, textarea:focus
+	-webkit-appearance none
+	-moz-appearance none
+	border-radius 0
+	background-color transparent
+	border-style solid
+	border 0
+	border-bottom 2px solid
+	border-color #000
+	color rgba(0, 0, 0, 1)
+	display block
+	font-family $secondary_font
+	font-weight 200
+	height 2rem
+	margin 0 0 1rem 0
+	padding 0.5rem
+	width 100%
+	box-shadow none
+	color black
+	-webkit-box-sizing border-box
+	-moz-box-sizing border-box
+	box-sizing border-box
+	-webkit-transition border-color 0.15s linear, background 0.15s linear
+	-moz-transition border-color 0.15s linear, background 0.15s linear
+	-ms-transition border-color 0.15s linear, background 0.15s linear
+	-o-transition border-color 0.15s linear, background 0.15s linear
+	transition border-color 0.15s linear, background 0.15s linear
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill
+	background-color transparent
+
+input:focus, textarea:focus
+	outline none
+
+[type='submit']
+	border none
+	text-align left
+	line-height .8em
+	width auto
+	float right
+
+input[type=checkbox].css-checkbox {
+	position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	height:20px; 
+	display:inline-block;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	vertical-align:middle;
+	cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -20px;
+}
+label.css-label {
+	background-image:url("../images/checkbox.gif");
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-family $secondary_font
+	font-weight 200
+}
+
+::-webkit-input-placeholder
+	color black
+
+:-moz-placeholder
+	color black
+
+::-moz-placeholder
+	color black
+
+:-ms-input-placeholder
+	color black
+
+////////////////////////////////////////////////////////////////// MENU
+
+nav.mainmenu
+	span(1)
+	position fixed
+	top 0
+	left 0
+	z-index 9000
+	hideselect()
+	transition(transform, 800ms)
+	transform(translateY(-100%))
+	.inner
+		padding 0 $padding
+		transition(background-color, 1s)
+		background-color transparent
+		height 60px
+		+below($desktop)
+			height 43px
+			padding 3px ($padding/2)
+	.logo
+		float left
+		width 180px
+		padding-left 1em
+		+below($desktop)
+			width 115px
+			margin-left -1em
+	a, a:hover, a:visited
+		font-family inherit
+	ul
+		float left
+		padding-left 1em
+		margin-top -1px
+		-webkit-backface-visibility hidden
+		backface-visibility hidden
+		+below($desktop)
+			float right
+		li
+			position relative
+			font-family $secondary_font
+			font-weight 200
+			font-size 11px
+			letter-spacing .04rem
+			display inline-block
+			+below($desktop)
+				font-size 10px
+		li::before
+			bottom -4px
+			height .06em
+		.mobile
+			+above($desktop)
+				display none
+	ul.subscribe
+		height 100%
+		margin-top -1px
+		float right
+		transition(transform, 600ms)
+		transform(translateX(340px))
+		+below($desktop)
+			display none
+		input
+			margin-bottom 0
+			border-bottom 1px solid
+			font-weight 200
+			font-size 11px
+			letter-spacing .04rem
+		li.form form
+			transition()
+			opacity 0
+			transform(translateY(13px))
+			.mc-field-group
+				float left
+				width 150px
+				margin-left 10px
+				div
+					position absolute
+					top 40px
+			#mce-responses
+				transform(translateY(-13px))
+		.submit
+			display none
+			float left
+	ul.subscribe:hover
+		transform(translateX(0px))
+		li.form form
+			opacity 1
+	.grad
+		display none
+		span(1)
+		height 30px
+		transition(background)
+		vendor(background, linear-gradient(rgba($primary,1), rgba(255,255,255,0)))
+
+nav.mainmenu.is-visible
+	transform(translateY(0))
+		
+////////////////////////////////////////////////////////////////// LANDING
+
+section.landing
+	hideselect()
+	height auto
+	min-height auto
+	cursor url('../images/flag.png') 15 9, default
+	.logo
+		font-family "KB"
+		width 23.2vw
+		padding-left 1em
+		+below($desktop)
+			width 177px
+	.logo
+		display inline-block
+		transform(translateY(2%))
+	.intro p
+		display inline
+		//opacity 0
+	.wrap
+		margin 10% 0 0
+
+////////////////////////////////////////////////////////////////// ERROR
+
+section.error, section.pdf_page
+	+above($desktop)
+		flexbox()
+		flex-flow row nowrap
+		align-items center
+	position relative
+	min-height 100vh
+	height auto
+	cursor pointer
+	.wrap
+		flowing-paragraph(1em)
+		margin-top 0
+		+below($desktop)
+			margin 20% 0
+
+////////////////////////////////////////////////////////////////// ABOUT
+
+.animated
+	-webkit-animation-duration 10s
+	animation-duration 10s
+	-webkit-animation-fill-mode both
+	animation-fill-mode both
+	-webkit-backface-visibility hidden
+
+@-webkit-keyframes fadeOut {
+    from {
+		opacity: 1
+		vendor(filter, blur(0px))
+    }
+    10%{
+		vendor(filter, blur(10px))
+    }
+    50%{
+		vendor(filter, blur(50px))
+		opacity: 0.5
+    }
+    90%{
+		vendor(filter, blur(50px))
+		opacity: 0.5
+    }
+    100%{
+		vendor(filter, blur(50px))
+		opacity: 0
+    }
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1
+		vendor(filter, blur(0px))
+	}
+	10%{
+		vendor(filter, blur(10px))
+	}
+	50%{
+		vendor(filter, blur(50px))
+		opacity: 0.5
+	}
+	90%{
+		vendor(filter, blur(50px))
+		opacity: 0.5
+	}
+	100%{
+		vendor(filter, blur(50px))
+		opacity: 0
+	}
+}
+
+.fadeOut
+	-webkit-animation-name fadeOut
+	animation-name fadeOut
+
+section.about
+	+above($desktop)
+		flexbox()
+		flex-flow row nowrap
+		align-items center
+	position relative
+	min-height 100vh
+	height auto
+	cursor pointer
+	.wrap
+		margin-top 0
+		+below($desktop)
+			margin 20% 0
+	.logo
+		font-family "KB"
+		width 21.9vw
+		padding-left 1em
+		+below($desktop)
+			width 185px
+	.logo
+		display inline-block
+		transform(translateY(2%))
+	.intro
+		p
+			display inline
+			//opacity 0
+	.visualBack
+		transition(all, 1s)
+		opacity 1
+		visibility visible
+		-webkit-backface-visibility hidden
+		backface-visibility hidden
+	.backImage
+		position fixed
+		opacity 0
+		width 100%
+		z-index 0
+	.logo
+		padding-left 1em
+	.intro
+		//margin-bottom 1em
+	span.separator
+		margin-left -.25em
+	.shine
+		position relative
+	.shine:after
+		content ''
+		background-size 100% 100%
+		position absolute
+		top 0px
+		left 0px
+		width 100%
+		height 100%
+		display block
+	.shine.light:after
+		background url('../images/light.svg')
+	.skills
+		-webkit-backface-visibility hidden
+		-webkit-perspective 1000
+		backface-visibility hidden
+		transform translateZ(0)
+	.skills > p
+		display inline
+		padding-left 1em
+	.skill
+		font-family $accent_font
+		cursor pointer
+		position relative
+	.skill:hover
+		z-index 5000
+	button.arrow
+		transition()
+		position absolute
+		bottom $padding
+		left 50%
+		height auto
+		width 30px
+		margin-left -15px
+		border none
+		border-radius 0
+		z-index 100
+		background none
+		border none
+		cursor pointer
+	button.arrow:hover
+		transform(translateY(33%))
+	button.arrow:focus
+		outline none
+		box-shadow none
+		
+////////////////////////////////////////////////////////////////// CATEGORIES
+
+.categories
+	span(1)
+	margin-left 1em
+	margin-bottom 1.3em
+	+below($desktop)
+		margin-left 0em
+		margin-bottom .3em
+	.all, .category
+		cursor pointer
+	.all
+		display inline-block
+
+ul.nav_categories
+	display inline-block
+	width 200px
+	height 40px
+	border-bottom 5px solid
+	transform(translateY(-13px))
+	hideselect()
+	+below($desktop)
+		width 45%
+		height 35px
+
+ul.nav_categories .before, ul.nav_categories .after
+	position absolute
+	font-size 17px
+	width 14px
+	height 14px
+	left 2px
+	top 8px
+	cursor pointer
+	transform(rotate(90deg))
+	+below($desktop)
+		top 4px
+
+ul.nav_categories .after
+	left initial
+	right 2px
+	transform(rotate(-90deg))
+
+ul .category
+	display none
+	text-align center
+	font-size 25px
+	font-family $secondary_font
+	font-weight 200
+	line-height 1em
+	+below($desktop)
+		font-size 20px
+
+ul .category.enabled
+	display block
+	
+////////////////////////////////////////////////////////////////// WORK
+
+$year_size = 16px
+
+section.work
+	height auto
+	.wrap
+		+below($desktop)
+			margin-top 60px
+		+above($desktop)
+			span(10/12)
+	.projects
+		span(1)
+	.project, .category
+		transition(opacity)
+		opacity 1
+			
+	.project, .project_header, .project_title, .year_title, .project_divider
+		display inline
+		vertical-align top
+		
+	.project, .project_header, .project_title, .project_divider
+		+below($desktop)
+				span(1)
+				stack()
+				display block
+	
+	.project:last-child
+		.project_divider
+			display none
+
+	.project_title
+		hideselect()
+		position relative
+		z-index 100
+		cursor pointer
+	
+	.year_title
+		font-family $secondary_font
+		font-size $year_size
+		font-weight 200
+		margin-left -5px
+		+below($desktop)
+			display none
+
+	.project_title:hover
+		z-index 300
+
+	.project_infos
+		display none
+		vertical-align top
+		padding 0 7px 30px
+		font-family $secondary_font
+		font-weight 200
+		+below($desktop)
+			padding 7px 0
+		.project_year
+			font-size $year_size
+			padding 0 10px
+			line-height 1em
+			letter-spacing 0
+			margin-bottom .8em
+			+below($desktop)
+				span(2/12)
+				padding 0
+				font-size 17px
+		.infos_right
+			+above($desktop)
+				margin-left 20px
+		.project_subtitle
+			font-size $year_size
+			line-height 1em
+			margin-bottom .8em
+			letter-spacing 0
+			+below($desktop)
+				span(10/12)
+				padding 0
+				font-size 17px
+		.project_desc
+			font-size 11px
+			max-width 600px
+			//text-align justify
+			margin-bottom 15px
+			letter-spacing .04rem
+			flowing-paragraph(1em)
+			+above($desktop)
+				vendor(columns, 2)
+				vendor(column-gap, 20px)
+				vendor(column-rule, 1px outset rgba(0,0,0,0.5))
+			+below($desktop)
+				span(0.9)
+				font-size 15px
+
+	.project_content
+		display none
+
+	.project_divider
+		//margin-left -.2em
+		//border-right 3px solid
+		//margin 0 15px 15px
+		vertical-align initial
+		font-size .9em
+		+below($desktop)
+			display none
+
+	.project.disabled, .category.disabled
+		opacity 0.2!important
+			
+	.project.opened
+		.project_header
+			position relative
+			width 100%
+			display inline-flex
+			+below($desktop)
+				span(1)
+				stack()
+				display block
+		.project_title
+			display inline-table
+			font-family $accent_font
+			padding-right .1em
+			&hover
+				cursor pointer
+			+below($desktop)
+				span(1)
+				stack()
+				display block
+		.year_title
+			display none
+		.project_infos
+			display inline-flex
+			+below($desktop)
+				span(1)
+				stack()
+				display block
+			.project_divider
+				display none
+		.project_content
+			display inline
+		.project_image
+			display inline
+			+below($desktop)
+				margin 0 15px 15px 0
+			img
+				display none
+				vertical-align top
+				max-width 40%
+				max-height 800px
+				margin-bottom 15px
+				+below($desktop)
+					width 100%
+					max-width 100%
+					max-height 100%
+			img.landscape
+				max-width 65%
+			.project_video
+				display inline-block
+				width 300px!important
+				+below($desktop)
+					width 100%!important
+		.project_image.displayed
+			img
+				display inline
+				+below($desktop)
+					max-width 100%
+					max-height 100%
+			.project_video
+				
+				.play img
+					width initial!important
+		
+	.project
+		.project_image
+			img, img:hover
+				cursor url('../images/enlarge.gif') 7 7, auto				
+		.project_image.opened
+			img, img:hover
+				width 100%
+				cursor url('../images/reduce.gif') 7 7, auto
+			.project_video
+				width 50%!important
+				+below($desktop)
+					width 100%!important
+			
+	.project_year, .project_desc
+		font-family $secondary_font
+		letter-spacing normal
+		line-height 1.4em
+		vertical-align top
+		a, a:hover, a:visited
+			font-family $secondary_font
+		a::before
+			bottom -.1em
+
+	//Thumbnails Hover
+
+	.thumbnail_hover
+		display none
+		position absolute
+		top 0px
+		left 0px
+		transform(translate(-50%,-50%))
+		z-index 200
+		pointer-events none
+		img
+			max-height 400px
+			max-width 400px
+
+	.project:not(.opened)
+		.project_header:hover div.thumbnail_hover
+			+above($desktop)
+				display block
+
+	.project.disabled
+		.project_header:hover div.thumbnail_hover
+			display none
+
+section.work
+	.pdf_download
+		transition(transform)
+		position fixed
+		transform(translateX(120%))
+		bottom $padding
+		right $padding
+		font-family $secondary_font
+		font-size 15px
+		font-weight 200
+		cursor pointer
+	.project
+		.portfolio_select
+			width 32px
+			height 32px
+			background url('../images/pdf_off.gif') center no-repeat
+			background-size 55% 55%
+			margin-top 9px
+			margin-left auto
+			margin-right auto
+			cursor pointer
+			+below($desktop)
+				display none
+		.portfolio_select:hover
+			background url('../images/add.gif') center no-repeat
+			background-size 100% 100%
+			cursor pointer
+	.project.pdf_select
+		.portfolio_select
+			background url('../images/pdf_on.gif') center no-repeat
+			background-size 55% 55%
+		
+section.work.portfolioActive
+	.pdf_download
+		transform(translateX(0))
+
+
+section.work .projects.image_mode
+	.project_title, .year_title, .project_infos, .project_year, .project_desc
+		display none
+	.project_header
+			width 0
+			display inline-flex
+	.project_content
+		display inline
+		.project_image
+			display inline
+			+below($desktop)
+				margin 0 15px 15px 0
+			img
+				display inline
+				vertical-align top
+				max-width 30%
+				height auto
+				margin-bottom 15px
+				+below($desktop)
+					max-width 100%
+					max-height 100%
+			.project_video
+				display inline-block
+				.play img
+					width initial!important
+		.project_image.opened
+			display inline
+	
+
+////////////////////////////////////////////////////////////////// COLLAB
+	
+section.collab
+	+above($desktop)
+		flexbox()
+		align-items center
+	.wrap
+		col(9/12)
+		margin 0
+		margin-top 60px
+		+below($desktop)
+			stack()
+			padding 20% 0
+	.link
+		cursor url('../images/pen.png') 17 17, default
+	form
+		//transition(opacity, 1s)
+		opacity 0
+		padding .5em 0 0 1em
+		+below($desktop)
+			padding .5em 0 0 0
+	input, textarea, label
+		font-size 15px
+		cursor url('../images/pen.png') 17 17, default
+	.message-field
+		col(1)
+	.name-field, .email-field, .pdf-field
+		col(1/2)
+		+below($desktop)
+			stack()
+	.pdf-field
+		+below($desktop)
+			display none
+	.email-field, .pdf-field
+		margin-right 0
+	.message-field textarea
+		height auto
+	.error
+		display none
+	#result
+		transition(opacity,800ms)
+		opacity 0
+
+section.collab.submitted
+	.inner
+		display none
+	#result
+		opacity 1
+
+////////////////////////////////////////////////////////////////// CONTACT
+
+section.contact
+	position relative
+	overflow hidden
+	+above($desktop)
+		flexbox()
+		align-items center
+	+below($desktop)
+		margin-bottom 50px
+	a[href='mailto:studio@maisonnue.com']
+		font-family "PL"
+	.inner
+		span(1)
+	.wrap
+		span(9/12)
+		+below($desktop)
+			margin-top 60px
+		+above($desktop)
+			margin-top 0
+		p, ul.social
+			+above($desktop)
+				padding-left 1em
+	.sidebar
+		span(3/12)
+		font-size 30px
+		+below($desktop)
+			stack()
+			padding-top 50px
+		p
+			margin-bottom 1em
+	.credits
+		position absolute
+		bottom 45px
+		right 0
+		font-family $secondary_font
+		font-weight 200
+		font-size 9px
+		letter-spacing .04rem
+		line-height 1.4em
+		text-align right
+		+below($desktop)
+			display none
+		a
+			font-family $secondary_font
+		a::before
+			bottom -.1em
+		h1
+			cursor pointer
+			margin-bottom .3em
+		.content
+			display none
+			margin-bottom .3em
+	ul.social
+		padding-top 1em 
+		li
+			display inline-block
+		li:last-child
+			display none
+
+.mntl-crawler
+	max-height 30px
+	position fixed
+	bottom -40px
+	font-family 'CR'
+	font-size 15px
+	letter-spacing .05em
+	left 0
+	width 100%
+	background #ffffff
+	transition(bottom)
+	display block
+	box-sizing border-box
+	.mntl-crawler-icon
+		position absolute
+		top 0px
+		left 0px
+		width 40px
+		height 100%
+		z-index 1
+	span
+		display block
+		box-sizing border-box
+		hideselect()
+		cursor url('../3615/computer.png') 16 16, default
+.mntl-crawler:hover
+	vendor(filter,invert(1))
+	.mntl-crawler-icon
+		vendor(filter,invert(1))
+
+////////////////////////////////////////////////////////////////// 3615
+
+section#minitel
+	overflow hidden
+	min-height initial
+	height 0%
+	position fixed
+	visibility hidden
+	top 0
+	left 0
+	z-index 80000
+	background-color $secondary
+	hideselect()
+	.image_container
+		position absolute
+		top 0
+		left 0
+		height 0
+		width 100%
+		text-align center
+		background-image url('../3615/glitch.gif')
+		background-size 100% 50%
+		background-blend-mode multiply
+	.interface
+		position fixed
+		z-index 8000
+		cursor pointer
+	.mntl-logo
+		width 16px
+		top 15px
+		right 30px
+	.mntl-retour
+		font-family "CR"
+		padding 5px
+		font-size 17px
+		bottom 30px
+		left 30px
+	.mntl-suite
+		font-family "CR"
+		padding 5px
+		font-size 17px
+		bottom 30px
+		right 30px
+	.mntl-retour:hover, .mntl-suite:hover
+		background white
+	.mntl-title
+		hideselect()
+		width 450px
+		position absolute
+		top 50%
+		left 50%
+		transform(translate(-50%,-50%))
+		cursor pointer
+		+below($desktop)
+			width 80%
+		.plain
+			display block
+		.outline
+			display none
+	.mntl-title:hover
+		.plain
+			display none
+		.outline
+			display block
+	.image_container
+		z-index 500
+		height 100%
+	.back
+		z-index 0
+	.image
+		opacity 0
+		display inline-block
+		position absolute
+		width 300px
+		max-height 600px
+		cursor url('../3615/moveit.png') 50 10, default
+		.ui-resizable-handle
+			cursor url('../3615/scaleit.png') 50 10, default
+		.ui-resizable-n, .ui-resizable-s
+			height 17px
+		.ui-resizable-e, .ui-resizable-w
+			width 17px
+		img
+			width 100%
+			
+@keyframes top {
+    from {
+        -webkit-transform: translateY(-100%);
+           -moz-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+             -o-transform: translateY(-100%);
+                transform: translateY(-100%);
+    }
+    to {
+        -webkit-transform: translateY(0%);
+           -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+             -o-transform: translateY(0%);
+                transform: translateY(0%);
+    }
+}
+
+@keyframes bottom {
+    from {
+        -webkit-transform: translateY(100%);
+           -moz-transform: translateY(100%);
+            -ms-transform: translateY(100%);
+             -o-transform: translateY(100%);
+                transform: translateY(100%);
+    }
+    to {
+        -webkit-transform: translateY(0%);
+           -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+             -o-transform: translateY(0%);
+                transform: translateY(0%);
+    }
+}
+
+@keyframes left {
+    from {
+        -webkit-transform: translateX(-100%);
+           -moz-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+             -o-transform: translateX(-100%);
+                transform: translateX(-100%);
+    }
+    to {
+        -webkit-transform: translateX(0%);
+           -moz-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+             -o-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+}
+
+@keyframes right {
+    from {
+        -webkit-transform: translateX(100%);
+           -moz-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+             -o-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+    to {
+        -webkit-transform: translateX(0%);
+           -moz-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+             -o-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+}
+
+.background
+	display block
+	width 100%
+	height 100%
+	top 0
+	left 0
+	position absolute
+	z-index 0
+
+.background.top.appear
+	vendor(animation, top 700ms forwards ease)
+
+.background.bottom.appear
+	vendor(animation, bottom 700ms forwards ease)
+
+.background.left.appear
+	vendor(animation, left 700ms forwards ease)
+
+.background.right.appear
+	vendor(animation, right 700ms forwards ease)
+	
+
+////////////////////////////////////////////////////////////////// OVERRIDES
+
+body.inAbout
+	//background-color $secondary
+	nav.mainmenu .inner
+		background-color transparent
+	section.work, section.work.portfolioActive
+		.pdf_download
+			transform(translateX(120%))
+
+body.inAbout.inWork
+	nav.mainmenu .inner
+		background-color $primary
+	section.work
+		.pdf_download
+			transform(translateX(120%))
+	section.work.portfolioActive
+		.pdf_download
+			transform(translateX(0))
+
+body.inAbout.inWork.inCollab
+	//background-color $secondary
+	.visualBack
+		opacity 0
+		visibility hidden
+	nav.mainmenu .inner
+		//background-color $secondary
+	section.work, section.work.portfolioActive
+		.pdf_download
+			transform(translateX(120%))
+		
+body.inAbout.inWork, body.inAbout.inWork.inCollab.inContact
+	.visualBack
+		opacity 0
+		visibility hidden
+	//background-color $primary
+	nav.mainmenu .inner
+		background-color $primary
+
+body.inAbout.inWork.inCollab.inContact
+	.mntl-crawler
+		+above($desktop)
+			bottom 0
+	section.work, section.work.portfolioActive
+		.pdf_download
+			transform(translateX(120%))
+
+

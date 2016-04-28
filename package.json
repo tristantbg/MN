@@ -1,0 +1,15 @@
+{
+	"name": "",
+	"description": "",
+	"private": true,
+	"devDependencies": {
+		"grunt-contrib-stylus": "*",
+		"grunt-php": "*",
+		"jeet": "*",
+		"rupture": "*",
+	    "grunt-contrib-concat": "*",
+	    "grunt-contrib-uglify": "*",
+	    "grunt-contrib-watch": "*",
+		"grunt": "*"
+	}
+}
