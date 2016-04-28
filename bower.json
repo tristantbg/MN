@@ -9,7 +9,6 @@
     "jquery.pep": "^0.6.7",
     "lazysizes": "^1.4.0",
     "jStorage": "^0.4.12",
-    "waitForImages": "^2.1.0",
     "scrollmagic": "^2.0.5",
     "gsap": "^1.18.2"
   }
