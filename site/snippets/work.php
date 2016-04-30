@@ -113,7 +113,7 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								src="<?= url('assets/images/placeholder.gif') ?>"
 								data-src="<?php //echo $image->url() ?>"
 								data-srcset="<?php echo $srcset ?>" 
-								data-sizes="auto"
+								data-sizes="50vw"
 								data-optimumx="1.5"
 								data-small="<?php echo $rand_size ?>"
 								width="<?php echo $rand_size ?>px"
