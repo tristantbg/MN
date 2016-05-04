@@ -744,7 +744,6 @@ section.work
 				display none
 				vertical-align top
 				max-width 40%
-				max-height 800px
 				margin-bottom 15px
 				+below($desktop)
 					width 100%
@@ -761,10 +760,11 @@ section.work
 			img
 				display inline
 				+below($desktop)
+					width 100%
+					height auto
 					max-width 100%
 					max-height 100%
 			.project_video
-				
 				.play img
 					width initial!important
 		
@@ -775,6 +775,7 @@ section.work
 		.project_image.opened
 			img, img:hover
 				width 100%
+				height auto
 				cursor url('../images/reduce.gif') 7 7, auto
 			.project_video
 				width 50%!important

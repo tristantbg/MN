@@ -117,7 +117,7 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								data-optimumx="1.5"
 								data-small="<?php echo $rand_size ?>"
 								width="<?php echo $rand_size ?>px"
-								height="auto"
+								height="<?php echo $rand_size/$image->ratio() ?>"
 								alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', MaisonNue'; else: echo $project->title()->html().' — © '.$project->date(Y).', MaisonNue'; endif ?>">
 								
 							<?php endif ?>

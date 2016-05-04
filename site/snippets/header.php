@@ -1,4 +1,4 @@
-<!-- Website developed by Tristan Bagot -->
+<!-- Website designed and developed in collaboration with Tristan Bagot -->
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -6,7 +6,7 @@
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title><?php echo $site->title()->html() ?> | Creative Studio</title>
 	<meta name="description" content="<?php echo $site->description()->html() ?>">
 	<meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
