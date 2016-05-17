@@ -118,7 +118,11 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								data-small="<?php echo $rand_size ?>"
 								width="<?php echo $rand_size ?>px"
 								height="<?php echo $rand_size/$image->ratio() ?>"
-								alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', MaisonNue'; else: echo $project->title()->html().' — © '.$project->date(Y).', MaisonNue'; endif ?>">
+								alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>">
+
+								<noscript>
+								<img class="thumb" alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>" src="<?php echo resizeOnDemand($image, 1300) ?>" data-small="<?php echo $rand_size ?>" width="<?php echo $rand_size ?>px" height="<?php echo $rand_size/$image->ratio() ?>">
+								</noscript>	
 								
 							<?php endif ?>
 
