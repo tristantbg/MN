@@ -107,8 +107,15 @@ function init() {
         hasher.init();
     });
     $(window).scroll(function(event) {
+      if ($(document).scrollTop() > 100) {
         clientMoved = true;
+      }
     });
+    setTimeout(function(){
+      if (!clientMoved) {
+        $('nav.mainmenu').addClass('is-visible');
+      }
+    },8000);
     $(window).mousemove(function(event) {
         posX = event.pageX;
         posY = event.pageY;
