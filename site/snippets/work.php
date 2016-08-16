@@ -111,17 +111,17 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								<img 
 								class="thumb lazyload <?php if($image->isLandscape()){ echo "landscape"; }?>"
 								src="<?= url('assets/images/placeholder.gif') ?>"
-								data-src="<?php //echo $image->url() ?>"
+								data-src="<?php resizeOnDemand($image, 500) ?>"
 								data-srcset="<?php echo $srcset ?>" 
 								data-sizes="50vw"
 								data-optimumx="1.5"
 								data-small="<?php echo $rand_size ?>"
 								width="<?php echo $rand_size ?>px"
 								height="<?php echo $rand_size/$image->ratio() ?>"
-								alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>">
+								alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>" />
 
 								<noscript>
-								<img class="thumb" alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>" src="<?php echo resizeOnDemand($image, 1300) ?>" data-small="<?php echo $rand_size ?>" width="<?php echo $rand_size ?>px" height="<?php echo $rand_size/$image->ratio() ?>">
+								<img class="thumb" alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>" src="<?php echo resizeOnDemand($image, 1300) ?>" data-small="<?php echo $rand_size ?>" width="<?php echo $rand_size ?>px" height="<?php echo $rand_size/$image->ratio() ?>" />
 								</noscript>	
 								
 							<?php endif ?>

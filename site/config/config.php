@@ -42,5 +42,14 @@ c::set('routes', array(
       		// redirect to the article or the error page
       		go($page ? '/#!/page/work/'.$uri : 'error');
         }
+    ),
+    array(
+        'pattern' => 'about',
+        'action'  => function($uri,$uid) {
+          $page = page('work/' . $uid);
+
+      		// redirect to the article or the error page
+      		go($page ? '/#!/page/work/'.$uri : 'error');
+        }
     )
 ));
