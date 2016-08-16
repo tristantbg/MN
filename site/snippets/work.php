@@ -111,7 +111,7 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								<img 
 								class="thumb lazyload <?php if($image->isLandscape()){ echo "landscape"; }?>"
 								src="<?= url('assets/images/placeholder.gif') ?>"
-								data-src="<?php resizeOnDemand($image, 500) ?>"
+								data-src="<?php echo resizeOnDemand($image, 500) ?>"
 								data-srcset="<?php echo $srcset ?>" 
 								data-sizes="50vw"
 								data-optimumx="1.5"
