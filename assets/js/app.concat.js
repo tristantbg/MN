@@ -107,7 +107,7 @@ function init() {
         hasher.init();
     });
     $(window).scroll(function(event) {
-      if ($(document).scrollTop() > 100) {
+      if ($(window).scrollTop() > 100) {
         clientMoved = true;
       }
     });

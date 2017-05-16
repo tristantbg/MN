@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['assets/oembed/oembed.js', 'assets/lib/jStorage/jstorage.min.js', 'assets/lib/lazysizes/lazysizes.min.js', 'assets/lib/lazysizes/optimumx/ls.optimumx.min.js', 'assets/js/vendor/jquery-ui/jquery-ui.min.js','assets/lib/jquery.pep/src/jquery.pep.js', 'assets/lib/js-signals/dist/signals.min.js', 'assets/lib/hasher/dist/js/hasher.min.js', 'assets/lib/jquery.snapscroll-master/core/dependencies/jquery.scroll_to.js', 'assets/lib/jquery-form/jquery.form.js', 'assets/lib/hypher/hyphen.js', 'assets/lib/crawler/crawler.js','assets/lib/gsap/src/minified/TweenMax.min.js', 'assets/lib/scrollmagic/scrollmagic/minified/ScrollMagic.min.js', 'assets/lib/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js'],
+                src: ['assets/oembed/oembed.js', 'assets/lib/jStorage/jstorage.min.js', 'assets/lib/lazysizes/lazysizes.min.js', 'assets/lib/lazysizes/optimumx/ls.optimumx.min.js', 'assets/js/vendor/jquery-ui/jquery-ui.min.js','assets/lib/jquery.pep/src/jquery.pep.js', 'assets/lib/js-signals/dist/signals.min.js', 'assets/lib/hasher/dist/js/hasher.min.js', 'assets/lib/jquery.scrollTo/jquery.scrollTo.js', 'assets/lib/jquery-form/jquery.form.js', 'assets/lib/hypher/hyphen.js', 'assets/lib/crawler/crawler.js','assets/lib/gsap/src/minified/TweenMax.min.js', 'assets/lib/scrollmagic/scrollmagic/minified/ScrollMagic.min.js', 'assets/lib/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {
