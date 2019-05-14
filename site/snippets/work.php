@@ -33,9 +33,9 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 		<div class="projects">
 			<?php foreach($work->children()->visible() as $project): ?>
 
-				<?php 
+				<?php
 
-				if(!$project->featured()->empty()):
+				if(!$project->featured()->empty() && $project->featured()->toFile()):
 					$featured_url = resizeOnDemand($project->image($project->featured()), 400);
 				else: $featured_url = "";
 				endif;
@@ -56,7 +56,7 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 								<?php echo $project->date('Y') ?>
 								<div class="portfolio_select" alt="Add project to portfolio"></div>
 							</div>
-							
+
 							<div class="infos_right">
 							<?php if(!$project->subtitle()->empty()): ?>
 								<div class="project_subtitle">
@@ -91,7 +91,7 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 									} else {
 										$rand_size = rand(75,130);
 									}
-									
+
 								} else {
 									if ($image->landscape()) {
 										$rand_size = rand(180,250);
@@ -108,11 +108,11 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 									$srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
 								}
 								?>
-								<img 
+								<img
 								class="thumb lazyload <?php if($image->isLandscape()){ echo "landscape"; }?>"
 								src="<?= url('assets/images/placeholder.gif') ?>"
 								data-src="<?php echo resizeOnDemand($image, 500) ?>"
-								data-srcset="<?php echo $srcset ?>" 
+								data-srcset="<?php echo $srcset ?>"
 								data-sizes="50vw"
 								data-optimumx="1.5"
 								data-small="<?php echo $rand_size ?>"
@@ -122,8 +122,8 @@ $all_categories = $work->children()->visible()->pluck('categories', ',', true);
 
 								<noscript>
 								<img class="thumb" alt="<?php if (!$thumb->caption()->empty()): echo $project->title()->html().', '.$thumb->caption()->html().' — © '.$project->date(Y).', Maison Nue'; else: echo $project->title()->html().' — © '.$project->date("Y").', Maison Nue'; endif ?>" src="<?php echo resizeOnDemand($image, 1300) ?>" data-small="<?php echo $rand_size ?>" width="<?php echo $rand_size ?>px" height="<?php echo $rand_size/$image->ratio() ?>" />
-								</noscript>	
-								
+								</noscript>
+
 							<?php endif ?>
 
 						</div>

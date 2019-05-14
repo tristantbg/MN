@@ -16,10 +16,10 @@ foreach ($all_categories as $cat) {
 	$index = 0;
 
 	foreach ($projectChilds as $project) {
-		
+
 		foreach($project->thumbs()->toStructure() as $thumb) {
 
-			if ($thumb->featured() == '1') {
+			if ($thumb->featured() == '1' && $thumb->content()->toFile()) {
 
 				$image = $thumb->content();
 				$t = resizeOnDemand($image->toFile(), 900);
